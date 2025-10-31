@@ -137,7 +137,6 @@ jobs:
   publish:
     name: Publish a release
     runs-on: "ubuntu-22.04"
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
     needs:
       - build
       - test-distributables
