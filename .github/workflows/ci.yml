@@ -3,27 +3,17 @@ on: workflow_dispatch
 env:
   HTTPTOOLKIT_SERVER_DISABLE_AUTOUPDATE: 1 # Don't try to autoupdate during tests etc
 jobs:
-  calculate_sha:
-    runs-on: ubuntu-latest
-    outputs:
-      short_sha: ${{ steps.calc_sha.outputs.short_sha }}
-    steps:
-    - name: Calculate short SHA
-      run: echo "short_sha=${{ github.sha::0:7 }}" >> "$GITHUB_OUTPUT"
-      id: calc_sha
   build:
     name: Build & test
     runs-on: ubuntu-22.04
-    needs: calculate_sha
     container:
       image: httptoolkit/act-build-base:v3.0.0
       options: "--privileged" # Required for DIND tests
     env:
       DIND_HOST: unix:///tmp/docker.sock
     steps:
-      - name: Use short SHA
-        run: echo "Short SHA is ${{ needs.calculate_sha.outputs.short_sha }}"
-        
+      - uses: benjlevesque/short-sha@v3.0
+      - run: echo $SHA
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
@@ -152,8 +142,8 @@ jobs:
     needs:
       - build
       - test-distributables
-      - calculate_sha
     steps:
+      - uses: benjlevesque/short-sha@v3.0
       - name: Get our distributables
         uses: actions/download-artifact@v4
         with:
@@ -166,4 +156,4 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./distributables/*/*
           file_glob: true
-          tag: ${{ github.ref }}.${{ needs.calculate_sha.outputs.short_sha }}
+          tag: ${{ github.ref }}.${{ env.SHA }}
