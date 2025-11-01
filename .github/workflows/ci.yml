@@ -154,4 +154,4 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./distributables/*/*
           file_glob: true
-          tag: ${{ github.ref }}.${{ SHORT_TAG }}
+          tag: ${{ github.ref }}.$SHORT_TAG
