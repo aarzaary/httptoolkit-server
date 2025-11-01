@@ -2,6 +2,7 @@ name: CI
 on: workflow_dispatch
 env:
   HTTPTOOLKIT_SERVER_DISABLE_AUTOUPDATE: 1 # Don't try to autoupdate during tests etc
+  SHORT_TAG: ${ git.sha::7 }
 jobs:
   build:
     name: Build & test
@@ -153,4 +154,4 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./distributables/*/*
           file_glob: true
-          tag: ${{ github.ref }}.${{ github.sha::7 }}
+          tag: ${{ github.ref }}.${{ SHORT_TAG }}
