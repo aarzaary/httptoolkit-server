@@ -156,4 +156,4 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./distributables/*/*
           file_glob: true
-          tag: ${{ github.ref }}.${{ env.SHA }}
+          tag: ${{ env.SHA }}
