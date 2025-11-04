@@ -1,5 +1,5 @@
 name: CI
-on: [push, pull_request]
+on: workflow_dispatch
 env:
   HTTPTOOLKIT_SERVER_DISABLE_AUTOUPDATE: 1 # Don't try to autoupdate during tests etc
 jobs:
@@ -12,6 +12,8 @@ jobs:
     env:
       DIND_HOST: unix:///tmp/docker.sock
     steps:
+      - uses: benjlevesque/short-sha@v3.0
+      - run: echo $SHA
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
@@ -137,11 +139,11 @@ jobs:
   publish:
     name: Publish a release
     runs-on: "ubuntu-22.04"
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
     needs:
       - build
       - test-distributables
     steps:
+      - uses: benjlevesque/short-sha@v3.0
       - name: Get our distributables
         uses: actions/download-artifact@v4
         with:
@@ -154,13 +156,4 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: ./distributables/*/*
           file_glob: true
-          tag: ${{ github.ref }}
-
-      - name: Upload latest manifest
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./distributables/latest-manifest/*
-          file_glob: true
-          tag: latest-manifest
-          overwrite: true
+          tag: "main"
