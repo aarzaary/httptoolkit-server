@@ -13,7 +13,7 @@ export const ALLOWED_ORIGINS = IS_PROD_BUILD
         // whilst you have the app open. If they could (requires an HTTP mitm),
         // they would be able to start proxies & interceptors.
         /^https:\/\/app\.httptoolkit\.tech$/,
-        /^https:\/\/toolkit\.arylabs\.my.id$/,
+        /^https:\/\/toolkit\.arylabs\.my\.id$/,
         /^http:\/\/10.11.12.10$/,
     ]
     : [
