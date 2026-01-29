@@ -1,6 +1,10 @@
 {
   "name": "httptoolkit-server",
+<<<<<<< HEAD
   "version": "1.24.0",
+=======
+  "version": "1.24.1",
+>>>>>>> 24f21835cef55f0027a7d888a9d734f7b944a29c
   "author": "Tim Perry <pimterry@gmail.com>",
   "types": "lib/index.d.ts",
   "main": "lib/index.js",
@@ -186,7 +190,7 @@
     ],
     "update": {
       "s3": {
-        "host": "https://github.com/httptoolkit/httptoolkit-server/releases/download/",
+        "host": "",
         "templates": {
           "target": {
             "versioned": "v<%- version %>/<%- channel === 'stable' ? '' : channel + '-' %><%- bin %>-v<%- version %>-<%- platform %>-<%- arch %><%- ext %>",
