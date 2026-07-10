@@ -181,11 +181,7 @@
     ],
     "update": {
       "s3": {
-<<<<<<< HEAD
         "host": "https://github.com",
-=======
-        "host": "",
->>>>>>> 24f21835cef55f0027a7d888a9d734f7b944a29c
         "templates": {
           "target": {
             "versioned": "v<%- version %>/<%- channel === 'stable' ? '' : channel + '-' %><%- bin %>-v<%- version %>-<%- platform %>-<%- arch %><%- ext %>",
