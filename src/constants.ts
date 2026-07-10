@@ -13,11 +13,7 @@ export const ALLOWED_ORIGINS = IS_PROD_BUILD
         // whilst you have the app open. If they could (requires an HTTP mitm),
         // they would be able to start proxies & interceptors.
         /^https:\/\/app\.httptoolkit\.tech$/,
-<<<<<<< HEAD
-		/^https:\/\/toolkit\.arylabs\.my.id$/,
-=======
         /^https:\/\/toolkit\.arylabs\.my\.id$/,
->>>>>>> 24f21835cef55f0027a7d888a9d734f7b944a29c
     ]
     : [
         // Dev builds can use the main site, or local sites, even if those
@@ -28,11 +24,7 @@ export const ALLOWED_ORIGINS = IS_PROD_BUILD
         /^https?:\/\/127.0.0.\d+(:\d+)?$/,
         /^http:\/\/local\.httptoolkit\.tech(:\d+)?$/,
         /^https:\/\/app\.httptoolkit\.tech$/,
-<<<<<<< HEAD
-		/^https:\/\/toolkit\.arylabs\.my.id$/,
-=======
-		/^https:\/\/toolkit\.arylabs\.my\.id$/,
->>>>>>> 24f21835cef55f0027a7d888a9d734f7b944a29c
+        /^https:\/\/toolkit\.arylabs\.my\.id$/,
     ];
 
 export const MOCKTTP_ALLOWED_ORIGINS = [
