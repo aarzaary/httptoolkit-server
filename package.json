@@ -181,7 +181,7 @@
     ],
     "update": {
       "s3": {
-        "host": "https://github.com/httptoolkit/httptoolkit-server/releases/download/",
+        "host": "https://github.com",
         "templates": {
           "target": {
             "versioned": "v<%- version %>/<%- channel === 'stable' ? '' : channel + '-' %><%- bin %>-v<%- version %>-<%- platform %>-<%- arch %><%- ext %>",
